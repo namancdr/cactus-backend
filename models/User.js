@@ -5,6 +5,9 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+  imagePath: {
+    type: String
+  },
   username: {
     type: String,
     required: true,

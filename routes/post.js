@@ -47,7 +47,7 @@ router.post(
 router.get("/fetchusersposts", fetchuser, async (req, res) => {
   let success = false;
   try {
-    const posts = await Post.find({ user: req.user.id }).populate("user");;
+    const posts = await Post.find({ user: req.user.id }).populate("user");
     res.json(posts);
   } catch (error) {
     console.log(success, error.message);
@@ -241,11 +241,11 @@ router.delete("/deletebookmark/:id", fetchuser, async (req, res) => {
 router.get("/fetchbookmarks", fetchuser, async (req, res) => {
   let success = false;
   try {
-    const user = await User.findById(req.user.id)
+    const user = await User.findById(req.user.id);
     if (!user) return res.status(404).send({ error: "User not found" });
 
     const ids = user.bookmarkedPosts;
-    const posts = await Post.find({ _id: { $in: ids } }).populate('user')
+    const posts = await Post.find({ _id: { $in: ids } }).populate("user");
 
     res.json(posts);
   } catch (error) {

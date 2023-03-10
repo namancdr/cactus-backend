@@ -6,7 +6,7 @@ const UserSchema = new Schema({
     type: String,
   },
   imagePath: {
-    type: String
+    type: String,
   },
   username: {
     type: String,
@@ -36,6 +36,12 @@ const UserSchema = new Schema({
     },
   ],
   followers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
+  following: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",

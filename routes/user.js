@@ -130,7 +130,10 @@ router.post("/searchusers", fetchuser, async (req, res) => {
   try {
     const { username } = req.body;
     const allUsers = await User.find({
-      username: { $regex: username, $options: "i" },
+      $or: [
+        { name: { $regex: username, $options: 'i' } },
+        { username: { $regex: username, $options: 'i' } }
+      ]
     });
     res.status(200).send(allUsers);
   } catch (error) {
